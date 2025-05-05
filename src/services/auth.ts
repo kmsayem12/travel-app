@@ -8,7 +8,6 @@ import {
 } from '@react-native-firebase/auth';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import firestore from '@react-native-firebase/firestore';
 import {serverTimestamp} from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -80,7 +79,7 @@ export const signOut = async (): Promise<void> => {
   try {
     const {currentUser} = auth();
     if (currentUser) {
-      await firestore().collection('users').doc(currentUser.uid).update({
+      await database().ref(`/users/${currentUser.uid}`).set({
         isOnline: false,
         lastSeen: serverTimestamp(),
       });
