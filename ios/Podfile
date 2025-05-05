@@ -14,6 +14,9 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# For Firebase
+use_frameworks! :linkage => :static
+
 target 'TravelApp' do
   config = use_native_modules!
 
