@@ -44,4 +44,7 @@ export const styles = StyleSheet.create({
     color: '#0066cc',
     fontSize: 16,
   },
+  registerButton: {
+    marginTop: 20,
+  },
 });

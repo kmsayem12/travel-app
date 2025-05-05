@@ -28,17 +28,6 @@ const loginSchema = z.object({
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
-const localStyles = StyleSheet.create({
-  registerButton: {
-    marginTop: 20,
-  },
-  error: {
-    color: 'red',
-    fontSize: 12,
-    marginTop: 5,
-  },
-});
-
 const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   const {
     control,
@@ -85,9 +74,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
               placeholder="Enter your email"
               error={errors.email?.message}
             />
-            {errors.email && (
-              <Text style={localStyles.error}>{errors.email.message}</Text>
-            )}
           </>
         )}
       />
@@ -105,9 +91,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
               placeholder="Enter your password"
               error={errors.password?.message}
             />
-            {errors.password && (
-              <Text style={localStyles.error}>{errors.password.message}</Text>
-            )}
           </>
         )}
       />
@@ -123,7 +106,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         title="Don't have an account? Sign up"
         variant="outline"
         onPress={() => navigation.navigate('Register')}
-        style={localStyles.registerButton}
+        style={styles.registerButton}
       />
     </View>
   );
