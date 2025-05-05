@@ -118,6 +118,13 @@ const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
         loading={isSubmitting}
         disabled={isSubmitting}
       />
+
+      <Button
+        title="Don't have an account? Sign up"
+        variant="outline"
+        onPress={() => navigation.navigate('Register')}
+        style={localStyles.registerButton}
+      />
     </View>
   );
 };
