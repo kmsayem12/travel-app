@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {styles} from '../styles/SplashStyles';
+import {checkAuthState} from '../services/auth';
 import {RootStackParamList} from '../types/navigation';
 import LoadingIndicator from '../components/common/LoadingIndicator';
 
@@ -16,11 +17,20 @@ interface SplashScreenProps {
 }
 
 const SplashScreen: React.FC<SplashScreenProps> = ({navigation}) => {
-  useEffect(() => {
-    setTimeout(() => {
-      navigation.replace('Home');
-    }, 2000); // Show splash for 2 seconds
+  const checkAuthStatus = useCallback(async () => {
+    try {
+      const isAuthenticated = await checkAuthState();
+      setTimeout(() => {
+        navigation.replace(isAuthenticated ? 'Home' : 'Login');
+      }, 2000); // Show splash for 2 seconds
+    } catch (error) {
+      navigation.replace('Login');
+    }
   }, [navigation]);
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, [checkAuthStatus]);
 
   return (
     <View style={styles.container}>
