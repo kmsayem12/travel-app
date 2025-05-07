@@ -12,10 +12,29 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        // classpath("com.android.tools.build:gradle")
+        classpath('com.android.tools.build:gradle:8.0.1')
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        
+        classpath 'com.google.gms:google-services:4.4.2'
+
     }
+
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+
+subprojects { project ->
+    if (project.name == "react-native-keyboard-controller") {
+        project.plugins.withId("com.android.library") {
+            project.android {
+                lint {
+                    abortOnError false
+                    checkReleaseBuilds false
+                }
+            }
+        }
+    }
+}

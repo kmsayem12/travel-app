@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "1047693879323",
+    "firebase_url": "https://crypto-lexicon-120010.firebaseio.com",
+    "project_id": "crypto-lexicon-120010",
+    "storage_bucket": "crypto-lexicon-120010.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047693879323:android:34be076ab1ba5fe52270be",
+        "android_client_info": {
+          "package_name": "com.bazardei.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047693879323-7qn2icfccpvco1og7m6fu8qul82dpcp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwZ3B3r4L4rniDkLEdPGqE9QoTmrCujk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047693879323-7qn2icfccpvco1og7m6fu8qul82dpcp6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1047693879323-qbd1dqkhqsef3u0of4qfe0ovl5d3nig9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bazardei"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047693879323:android:cd3b154853b908152270be",
+        "android_client_info": {
+          "package_name": "com.radio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047693879323-7qn2icfccpvco1og7m6fu8qul82dpcp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwZ3B3r4L4rniDkLEdPGqE9QoTmrCujk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047693879323-7qn2icfccpvco1og7m6fu8qul82dpcp6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1047693879323-qbd1dqkhqsef3u0of4qfe0ovl5d3nig9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bazardei"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047693879323:android:f4609104039b1bca2270be",
+        "android_client_info": {
+          "package_name": "com.travelapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047693879323-7qn2icfccpvco1og7m6fu8qul82dpcp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwZ3B3r4L4rniDkLEdPGqE9QoTmrCujk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047693879323-7qn2icfccpvco1og7m6fu8qul82dpcp6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1047693879323-qbd1dqkhqsef3u0of4qfe0ovl5d3nig9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bazardei"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
