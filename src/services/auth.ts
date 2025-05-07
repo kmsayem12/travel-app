@@ -8,7 +8,6 @@ import {
 } from '@react-native-firebase/auth';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import {serverTimestamp} from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {AuthCredentials, RegisterCredentials, AuthError} from '../types/auth';
@@ -30,7 +29,7 @@ export const signUp = async ({
       await database().ref(`/users/${user.uid}`).set({
         name,
         email,
-        createdAt: serverTimestamp(),
+        createdAt: database.ServerValue.TIMESTAMP,
         isOnline: true,
       });
     } catch (error) {
@@ -58,9 +57,9 @@ export const signIn = async ({
     }
 
     try {
-      await database().ref(`/users/${user.uid}`).set({
+      await database().ref(`/users/${user.uid}`).update({
         isOnline: true,
-        lastLoginAt: serverTimestamp(),
+        lastLoginAt: database.ServerValue.TIMESTAMP,
       });
     } catch (error) {
       console.error('Error updating user in Firestore:', error);
@@ -79,9 +78,9 @@ export const signOut = async (): Promise<void> => {
   try {
     const {currentUser} = auth();
     if (currentUser) {
-      await database().ref(`/users/${currentUser.uid}`).set({
+      await database().ref(`/users/${currentUser.uid}`).update({
         isOnline: false,
-        lastSeen: serverTimestamp(),
+        lastSeen: database.ServerValue.TIMESTAMP,
       });
     }
 
