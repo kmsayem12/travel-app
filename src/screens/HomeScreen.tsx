@@ -1,10 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
-import {styles} from '../styles/HomeStyles';
-import {signOut} from '../services/auth';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../types/navigation';
+
+import {signOut} from '../services/auth';
+import {styles} from '../styles/HomeStyles';
 import Button from '../components/buttons/Button';
+import {RootStackParamList} from '../types/navigation';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -25,6 +26,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <Button
+          title="Chat"
+          variant="primary"
+          onPress={() => navigation.navigate('ChatList')}
+          style={styles.chatButton}
+        />
         <Button
           title="Logout"
           variant="outline"
