@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
-import {ChatUser} from '../types/chat';
+import {ChatUser, Message} from '../types/chat';
 
 export const fetchUsers = async ({
   setUsers,
@@ -96,4 +96,128 @@ export const getStatusForUsers = ({
 
 export const getChatId = (userId1: string, userId2: string): string => {
   return [userId1, userId2].sort().join('_');
+};
+
+export const sendMessage = async (
+  receiverId: string,
+  messageText: string,
+): Promise<void> => {
+  try {
+    const currentUser = auth().currentUser;
+    const timestamp = database.ServerValue.TIMESTAMP;
+    if (!currentUser) {
+      throw new Error('No authenticated user');
+    }
+
+    const chatId = getChatId(currentUser.uid, receiverId);
+    const messageRef = database().ref(`/chats/${chatId}/messages`).push();
+
+    const newMessage = {
+      text: messageText,
+      createdAt: timestamp,
+      user: {
+        _id: currentUser.uid,
+        name: currentUser.displayName || '',
+      },
+    };
+
+    await messageRef.set(newMessage);
+
+    await database()
+      .ref(`/chats/${chatId}/summary`)
+      .set({
+        lastMessage: messageText,
+        lastMessageTime: timestamp,
+        participants: {
+          [currentUser.uid]: true,
+          [receiverId]: true,
+        },
+        readStatus: {
+          [currentUser.uid]: true,
+          [receiverId]: false,
+        },
+      });
+
+    await Promise.all([
+      database()
+        .ref(`/users/${currentUser.uid}/lastMessageTimestamp`)
+        .set(timestamp),
+      database()
+        .ref(`/users/${receiverId}/lastMessageTimestamp`)
+        .set(timestamp),
+    ]);
+  } catch (error) {
+    console.error('Error sending message:', error);
+  }
+};
+
+export const subscribeToMessages = ({
+  chatId,
+  setMessages,
+  setLoading,
+}: {
+  chatId: string;
+  setMessages: (messages: Message[]) => void;
+  setLoading: (loading: boolean) => void;
+}): (() => void) => {
+  const messagesRef = database().ref(`/chats/${chatId}/messages`);
+
+  const onValueChange = messagesRef
+    .orderByChild('createdAt')
+    .on('value', snapshot => {
+      try {
+        const data = snapshot.val() || {};
+        const messages = Object.entries(data)
+          .map(([id, msg]: any) => ({
+            _id: id,
+            ...msg,
+            createdAt: new Date(msg.createdAt),
+          }))
+          .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()); // DESC order
+
+        setMessages(messages);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error while fetching messages:', error);
+      }
+    });
+
+  return () => messagesRef.off('value', onValueChange);
+};
+
+export const updateOnlineStatus = async (isOnline: boolean): Promise<void> => {
+  const currentUser = auth().currentUser;
+  if (!currentUser) {
+    return;
+  }
+
+  const uid = currentUser.uid;
+  const userRef = database().ref(`status/${uid}`);
+  const timestamp = database.ServerValue.TIMESTAMP;
+
+  try {
+    await userRef.set({isOnline, lastSeen: timestamp});
+    await database().ref(`users/${uid}`).update({
+      isOnline,
+      lastSeen: timestamp,
+    });
+  } catch (error) {
+    console.error('Error updating online status:', error);
+  }
+};
+
+export const subscribeToUserStatus = (
+  userId: string,
+  setIsReceiverOnline: (isOnline: boolean) => void,
+): (() => void) => {
+  const statusRef = database().ref(`status/${userId}`);
+  try {
+    statusRef.on('value', snapshot => {
+      const status = snapshot.val();
+      setIsReceiverOnline(status?.isOnline || false);
+    });
+  } catch (error) {
+    console.error('Error subscribing to user status:', error);
+  }
+  return () => statusRef.off();
 };

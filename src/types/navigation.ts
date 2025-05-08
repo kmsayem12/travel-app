@@ -6,6 +6,8 @@ export type PublicStackParamList = {
 
 export type PrivateStackParamList = {
   Home: undefined;
+  ChatList: undefined;
+  Chat: {userId: string; userName: string};
 };
 
 export type RootStackParamList = PublicStackParamList & PrivateStackParamList;
