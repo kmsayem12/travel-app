@@ -23,6 +23,9 @@
     "react-hook-form": "^7.56.2",
     "react-native": "0.79.2",
     "react-native-gesture-handler": "^2.25.0",
+    "react-native-gifted-chat": "^2.8.1",
+    "react-native-keyboard-controller": "^1.17.1",
+    "react-native-reanimated": "^3.17.5",
     "react-native-safe-area-context": "^5.4.0",
     "react-native-screens": "^4.10.0",
     "zod": "^3.24.4"

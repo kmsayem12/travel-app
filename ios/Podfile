@@ -22,6 +22,8 @@ target 'TravelApp' do
 
   use_react_native!(
     :path => config[:reactNativePath],
+     # To disable it, set the value of `:hermes_enabled` to `false`.
+  :hermes_enabled => false,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
