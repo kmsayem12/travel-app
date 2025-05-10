@@ -5,13 +5,13 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {styles} from './styles';
-import {signIn} from '../../services/auth';
-import {AuthCredentials} from '../../types/auth';
-import Input from '../../components/inputs/Input';
-import Button from '../../components/buttons/Button';
-import {RootStackParamList} from '../../types/navigation';
+import {signIn} from '@/services/auth';
+import {AuthCredentials} from '@/types/auth';
+import Input from '@/components/inputs/Input';
+import Button from '@/components/buttons/Button';
+import {RootStackParamList} from '@/types/navigation';
 import {defaultValues, LoginFormData, loginSchema} from './utils';
-import KeyboardAvoiding from '../../components/common/KeyboardAvoiding';
+import KeyboardAvoiding from '@/components/common/KeyboardAvoiding';
 
 type LoginScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

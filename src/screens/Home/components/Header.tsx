@@ -2,9 +2,9 @@ import {View} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {styles} from '../styles';
-import {signOut} from '../../../services/auth';
-import Button from '../../../components/buttons/Button';
-import {RootStackParamList} from '../../../types/navigation';
+import {signOut} from '@/services/auth';
+import Button from '@/components/buttons/Button';
+import {RootStackParamList} from '@/types/navigation';
 
 type HeaderProps = {
   navigation: StackNavigationProp<RootStackParamList>;

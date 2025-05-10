@@ -10,13 +10,13 @@ import {
 import auth from '@react-native-firebase/auth';
 
 import {styles} from './styles';
-import {ChatUser} from '../../types/chat';
-import Input from '../../components/inputs/Input';
-import {RootStackParamList} from '../../types/navigation';
-import StatusDot from '../../components/common/StatusDot';
+import {ChatUser} from '@/types/chat';
+import Input from '@/components/inputs/Input';
+import {RootStackParamList} from '@/types/navigation';
+import StatusDot from '@/components/common/StatusDot';
 import {useFocusEffect} from '@react-navigation/native';
-import LoadingIndicator from '../../components/common/LoadingIndicator';
-import {fetchUsers, getStatusForUsers, markAsRead} from '../../services/chat';
+import LoadingIndicator from '@/components/common/LoadingIndicator';
+import {fetchUsers, getStatusForUsers, markAsRead} from '@/services/chat';
 
 type ChatListScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

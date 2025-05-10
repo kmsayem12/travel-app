@@ -3,9 +3,9 @@ import {View, Text} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {styles} from './styles';
-import {checkAuthState} from '../../services/auth';
-import {RootStackParamList} from '../../types/navigation';
-import LoadingIndicator from '../../components/common/LoadingIndicator';
+import {checkAuthState} from '@/services/auth';
+import {RootStackParamList} from '@/types/navigation';
+import LoadingIndicator from '@/components/common/LoadingIndicator';
 
 type SplashScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

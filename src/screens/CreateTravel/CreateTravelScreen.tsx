@@ -18,12 +18,12 @@ import {
   requestCameraPermission,
 } from './utils';
 import {styles} from './styles';
-import Input from '../../components/inputs/Input';
-import Button from '../../components/buttons/Button';
-import {RootStackParamList} from '../../types/navigation';
-import {createTravel, uploadPhoto} from '../../services/travel';
-import LoadingIndicator from '../../components/common/LoadingIndicator';
-import KeyboardAvoiding from '../../components/common/KeyboardAvoiding';
+import Input from '@/components/inputs/Input';
+import Button from '@/components/buttons/Button';
+import {RootStackParamList} from '@/types/navigation';
+import {createTravel, uploadPhoto} from '@/services/travel';
+import LoadingIndicator from '@/components/common/LoadingIndicator';
+import KeyboardAvoiding from '@/components/common/KeyboardAvoiding';
 
 type CreateTravelScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

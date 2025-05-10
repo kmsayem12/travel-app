@@ -4,13 +4,13 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {useFocusEffect} from '@react-navigation/native';
 
 import {styles} from './styles';
+import {Travel} from '@/types/travel';
 import Header from './components/Header';
-import {Travel} from '../../types/travel';
-import Card from '../../components/cards/Card';
-import {getAllTravel} from '../../services/travel';
+import Card from '@/components/cards/Card';
+import {getAllTravel} from '@/services/travel';
+import {RootStackParamList} from '@/types/navigation';
 import TravelDetails from './components/TravelDetails';
-import {RootStackParamList} from '../../types/navigation';
-import LoadingIndicator from '../../components/common/LoadingIndicator';
+import LoadingIndicator from '@/components/common/LoadingIndicator';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 

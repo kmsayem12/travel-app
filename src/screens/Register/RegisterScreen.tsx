@@ -4,13 +4,13 @@ import {useForm, Controller} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import {signUp} from '../../services/auth';
-import Input from '../../components/inputs/Input';
 import {styles} from './styles';
-import {RegisterCredentials} from '../../types/auth';
-import Button from '../../components/buttons/Button';
-import {RootStackParamList} from '../../types/navigation';
-import KeyboardAvoiding from '../../components/common/KeyboardAvoiding';
+import {signUp} from '@/services/auth';
+import Input from '@/components/inputs/Input';
+import {RegisterCredentials} from '@/types/auth';
+import Button from '@/components/buttons/Button';
+import {RootStackParamList} from '@/types/navigation';
+import KeyboardAvoiding from '@/components/common/KeyboardAvoiding';
 import {defaultValues, RegisterFormData, registerSchema} from './utils';
 
 type RegisterScreenNavigationProp = StackNavigationProp<

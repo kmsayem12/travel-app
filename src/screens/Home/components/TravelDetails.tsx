@@ -1,8 +1,8 @@
 import {Image, ScrollView, Text, Dimensions} from 'react-native';
 
+import {isIos} from '@/utils';
 import {styles} from '../styles';
-import {isIos} from '../../../utils';
-import Modal from '../../../components/Modal/Modal';
+import Modal from '@/components/modal/Modal';
 
 type TravelDetailsProps = {
   modalVisible: boolean;

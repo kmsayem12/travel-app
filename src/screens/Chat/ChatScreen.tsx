@@ -17,11 +17,11 @@ import {
   updateOnlineStatus,
   subscribeToMessages,
   subscribeToUserStatus,
-} from '../../services/chat';
+} from '@/services/chat';
 import {styles} from './styles';
-import StatusDot from '../../components/common/StatusDot';
-import {RootStackParamList} from '../../types/navigation';
-import LoadingIndicator from '../../components/common/LoadingIndicator';
+import StatusDot from '@/components/common/StatusDot';
+import {RootStackParamList} from '@/types/navigation';
+import LoadingIndicator from '@/components/common/LoadingIndicator';
 
 type ChatScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Chat'>;
 type ChatScreenRouteProp = RouteProp<RootStackParamList, 'Chat'>;
