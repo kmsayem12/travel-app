@@ -19,6 +19,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import {RootStackParamList} from './src/types/navigation';
 import RegisterScreen from './src/screens/RegisterScreen';
 import ChatListScreen from './src/screens/ChatListScreen';
+import CreateTravelScreen from './src/screens/CreateTravel/CreateTravelScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -65,6 +66,11 @@ function App(): React.JSX.Element {
               options={({route}) => ({
                 title: route.params?.userName || 'Chat',
               })}
+            />
+            <Stack.Screen
+              name="CreateTravel"
+              component={CreateTravelScreen}
+              options={{title: 'Create Travel'}}
             />
           </Stack.Navigator>
         </NavigationContainer>
