@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import auth from '@react-native-firebase/auth';
 import {RouteProp} from '@react-navigation/native';
-import {AppState, AppStateStatus, View} from 'react-native';
+import {AppState, AppStateStatus, SafeAreaView} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GiftedChat, IMessage} from 'react-native-gifted-chat';
 
@@ -17,11 +17,11 @@ import {
   updateOnlineStatus,
   subscribeToMessages,
   subscribeToUserStatus,
-} from '../services/chat';
-import {styles} from '../styles/ChatStyles';
-import StatusDot from '../components/common/StatusDot';
-import {RootStackParamList} from '../types/navigation';
-import LoadingIndicator from '../components/common/LoadingIndicator';
+} from '../../services/chat';
+import {styles} from './styles';
+import StatusDot from '../../components/common/StatusDot';
+import {RootStackParamList} from '../../types/navigation';
+import LoadingIndicator from '../../components/common/LoadingIndicator';
 
 type ChatScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Chat'>;
 type ChatScreenRouteProp = RouteProp<RootStackParamList, 'Chat'>;
@@ -119,7 +119,7 @@ const ChatScreen: React.FC<ChatScreenProps> = ({route, navigation}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <GiftedChat
         messages={chatMessages}
         onSend={messages => onSend(messages)}
@@ -130,7 +130,7 @@ const ChatScreen: React.FC<ChatScreenProps> = ({route, navigation}) => {
         alwaysShowSend
         isScrollToBottomEnabled
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
