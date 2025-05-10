@@ -7,8 +7,9 @@ import React, {
 } from 'react';
 import auth from '@react-native-firebase/auth';
 import {RouteProp} from '@react-navigation/native';
-import {AppState, AppStateStatus, SafeAreaView} from 'react-native';
+import {AppState, AppStateStatus} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {GiftedChat, IMessage} from 'react-native-gifted-chat';
 
 import {

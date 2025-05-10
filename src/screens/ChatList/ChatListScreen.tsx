@@ -1,13 +1,7 @@
+import auth from '@react-native-firebase/auth';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState, useEffect, useCallback} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
-import auth from '@react-native-firebase/auth';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 
 import {styles} from './styles';
 import {ChatUser} from '@/types/chat';
@@ -120,7 +114,7 @@ const ChatListScreen: React.FC<ChatListScreenProps> = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Input
           value={searchQuery}
@@ -135,7 +129,7 @@ const ChatListScreen: React.FC<ChatListScreenProps> = ({navigation}) => {
         keyExtractor={item => item.id}
         ItemSeparatorComponent={Separator}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

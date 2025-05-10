@@ -1,7 +1,8 @@
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList} from 'react-native';
 import React, {useCallback, useState} from 'react';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {useFocusEffect} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {styles} from './styles';
 import {Travel} from '@/types/travel';
