@@ -18,6 +18,7 @@ export const inputStyles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
     backgroundColor: '#fff',
+    color: '#000',
   },
   inputError: {
     borderColor: '#FF3B30',
