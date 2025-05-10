@@ -14,11 +14,11 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {initDB} from './src/config/sqlite';
 import ChatScreen from './src/screens/ChatScreen';
 import HomeScreen from './src/screens/HomeScreen';
-import LoginScreen from './src/screens/LoginScreen';
 import SplashScreen from './src/screens/SplashScreen';
+import LoginScreen from './src/screens/Login/LoginScreen';
 import {RootStackParamList} from './src/types/navigation';
 import RegisterScreen from './src/screens/RegisterScreen';
-import ChatListScreen from './src/screens/ChatListScreen';
+import ChatListScreen from './src/screens/ChatList/ChatListScreen';
 import CreateTravelScreen from './src/screens/CreateTravel/CreateTravelScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();

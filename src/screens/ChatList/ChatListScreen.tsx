@@ -7,16 +7,16 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-
-import {ChatUser} from '../types/chat';
 import auth from '@react-native-firebase/auth';
-import Input from '../components/inputs/Input';
-import {styles} from '../styles/ChatListStyles';
-import {RootStackParamList} from '../types/navigation';
-import StatusDot from '../components/common/StatusDot';
+
+import {styles} from './styles';
+import {ChatUser} from '../../types/chat';
+import Input from '../../components/inputs/Input';
+import {RootStackParamList} from '../../types/navigation';
+import StatusDot from '../../components/common/StatusDot';
 import {useFocusEffect} from '@react-navigation/native';
-import LoadingIndicator from '../components/common/LoadingIndicator';
-import {fetchUsers, getStatusForUsers, markAsRead} from '../services/chat';
+import LoadingIndicator from '../../components/common/LoadingIndicator';
+import {fetchUsers, getStatusForUsers, markAsRead} from '../../services/chat';
 
 type ChatListScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -38,7 +38,6 @@ const ChatListScreen: React.FC<ChatListScreenProps> = ({navigation}) => {
   const [onlineStatus, setOnlineStatus] = useState<{[key: string]: boolean}>(
     {},
   );
-
   const currentUser = auth().currentUser;
 
   // Initial fetch & refresh on screen focus

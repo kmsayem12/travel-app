@@ -14,13 +14,6 @@ export const styles = StyleSheet.create({
     padding: 16,
     paddingBottom: 0,
   },
-  searchInput: {
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    fontSize: 16,
-  },
   userItem: {
     padding: 16,
     backgroundColor: '#fff',
