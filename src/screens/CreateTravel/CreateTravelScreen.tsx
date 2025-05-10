@@ -17,9 +17,9 @@ import {
   defaultValues,
   requestCameraPermission,
 } from './utils';
+import {styles} from './styles';
 import Input from '../../components/inputs/Input';
 import Button from '../../components/buttons/Button';
-import {styles} from '../../styles/CreateTravelStyles';
 import {RootStackParamList} from '../../types/navigation';
 import {createTravelLog, uploadPhoto} from '../../services/travel';
 import LoadingIndicator from '../../components/common/LoadingIndicator';
