@@ -6,6 +6,7 @@
  */
 
 import React, {useEffect} from 'react';
+import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -33,6 +34,7 @@ function App(): React.JSX.Element {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
+        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen
@@ -53,24 +55,25 @@ function App(): React.JSX.Element {
             <Stack.Screen
               name="Home"
               component={HomeScreen}
-              options={{headerLeft: () => null}}
+              options={{headerShown: false}}
             />
             <Stack.Screen
               name="ChatList"
               component={ChatListScreen}
-              options={{title: 'Chats'}}
+              options={{title: 'Chats', headerBackTitle: ''}}
             />
             <Stack.Screen
               name="Chat"
               component={ChatScreen}
               options={({route}) => ({
                 title: route.params?.userName || 'Chat',
+                headerBackTitle: '',
               })}
             />
             <Stack.Screen
               name="CreateTravel"
               component={CreateTravelScreen}
-              options={{title: 'Create Travel'}}
+              options={{title: 'Create Travel', headerBackTitle: ''}}
             />
           </Stack.Navigator>
         </NavigationContainer>
