@@ -22,7 +22,13 @@ export const createTravel = async (
         `INSERT INTO travel_logs 
          (userId, location, photo, notes, createdAt) 
          VALUES (?, ?, ?, ?, ?);`,
-        [currentUser, log.location, log.photo, log.notes, createdAt.getTime()],
+        [
+          currentUser.uid,
+          log.location,
+          log.photo,
+          log.notes,
+          createdAt.getTime(),
+        ],
         (_, result) => {
           console.log('Result:', result);
           resolve({
@@ -70,28 +76,6 @@ export const getTravels = async (): Promise<Travel[]> => {
       tx.executeSql(
         'SELECT * FROM travel_logs WHERE userId = ? ORDER BY createdAt DESC;',
         [currentUser.uid],
-        (_, {rows}) => {
-          const data: Travel[] = [];
-          for (let i = 0; i < rows.length; i++) {
-            data.push(rows.item(i));
-          }
-          resolve(data);
-        },
-        (_, error) => {
-          reject(error);
-          return false;
-        },
-      );
-    });
-  });
-};
-
-export const getAllTravel = async (): Promise<Travel[]> => {
-  return new Promise(async (resolve, reject) => {
-    (await db).transaction(tx => {
-      tx.executeSql(
-        'SELECT * FROM travel_logs ORDER BY createdAt DESC;',
-        [],
         (_, {rows}) => {
           const data: Travel[] = [];
           for (let i = 0; i < rows.length; i++) {

@@ -8,7 +8,7 @@ import {styles} from './styles';
 import {Travel} from '@/types/travel';
 import Header from './components/Header';
 import Card from '@/components/cards/Card';
-import {getAllTravel} from '@/services/travel';
+import {getTravels} from '@/services/travel';
 import {RootStackParamList} from '@/types/navigation';
 import TravelDetails from './components/TravelDetails';
 import LoadingIndicator from '@/components/common/LoadingIndicator';
@@ -33,7 +33,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
   const loadTravel = async () => {
     try {
-      const logs = await getAllTravel();
+      const logs = await getTravels();
       setTravels(logs);
     } catch (error) {
       console.error('Error loading travel logs:', error);
