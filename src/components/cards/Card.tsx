@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({log, onPress}) => {
         <Text style={cardStyles.date}>
           {new Date(log.createdAt).toLocaleDateString()}
         </Text>
-        <Text style={cardStyles.notes} numberOfLines={2}>
+        <Text style={cardStyles.notes} numberOfLines={1}>
           {log.notes}
         </Text>
       </View>

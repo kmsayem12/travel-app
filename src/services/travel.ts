@@ -3,12 +3,12 @@ import RNFS from 'react-native-fs';
 import {db} from '../config/sqlite';
 import {getCurrentUser} from './auth';
 import {Platform} from 'react-native';
-import {TravelLog} from '../types/travel';
+import {Travel} from '../types/travel';
 import {CreateTravelFormData} from '../screens/CreateTravel/utils';
 
-export const createTravelLog = async (
+export const createTravel = async (
   log: CreateTravelFormData,
-): Promise<TravelLog> => {
+): Promise<Travel> => {
   const currentUser = await getCurrentUser(); // Implement local auth/session as needed
 
   if (!currentUser) {
@@ -59,7 +59,7 @@ export const uploadPhoto = async (uri: string): Promise<string> => {
   return Platform.OS === 'android' ? `file://${destPath}` : destPath; // iOS handles both formats but prefers without file:// prefix for local files
 };
 
-export const getTravelLogs = async (): Promise<TravelLog[]> => {
+export const getTravels = async (): Promise<Travel[]> => {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
     throw new Error('No authenticated user');
@@ -71,7 +71,7 @@ export const getTravelLogs = async (): Promise<TravelLog[]> => {
         'SELECT * FROM travel_logs WHERE userId = ? ORDER BY createdAt DESC;',
         [currentUser.uid],
         (_, {rows}) => {
-          const data: TravelLog[] = [];
+          const data: Travel[] = [];
           for (let i = 0; i < rows.length; i++) {
             data.push(rows.item(i));
           }
@@ -86,14 +86,14 @@ export const getTravelLogs = async (): Promise<TravelLog[]> => {
   });
 };
 
-export const getAllTravelLogs = async (): Promise<TravelLog[]> => {
+export const getAllTravel = async (): Promise<Travel[]> => {
   return new Promise(async (resolve, reject) => {
     (await db).transaction(tx => {
       tx.executeSql(
         'SELECT * FROM travel_logs ORDER BY createdAt DESC;',
         [],
         (_, {rows}) => {
-          const data: TravelLog[] = [];
+          const data: Travel[] = [];
           for (let i = 0; i < rows.length; i++) {
             data.push(rows.item(i));
           }

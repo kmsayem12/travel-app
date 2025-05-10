@@ -12,7 +12,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import {initDB} from './src/config/sqlite';
-import HomeScreen from './src/screens/HomeScreen';
+import HomeScreen from './src/screens/Home/HomeScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import ChatScreen from './src/screens/Chat/ChatScreen';
 import LoginScreen from './src/screens/Login/LoginScreen';

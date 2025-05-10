@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 10,
+    padding: 16,
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
@@ -121,14 +121,10 @@ export const styles = StyleSheet.create({
     color: '#666',
     marginBottom: 15,
   },
-  photoScroll: {
-    marginBottom: 15,
-  },
   modalPhoto: {
-    width: 200,
     height: 200,
     borderRadius: 8,
-    marginRight: 10,
+    marginBottom: 15,
   },
   modalNotes: {
     fontSize: 16,
