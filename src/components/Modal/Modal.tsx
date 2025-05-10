@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {Modal, View, ViewStyle} from 'react-native';
 
-import {modalStyles} from './styles';
+import {styles} from './styles';
 import CustomButton from '../buttons/Button';
 
 interface CustomModalProps {
@@ -23,13 +23,13 @@ const CustomModal: React.FC<CustomModalProps> = ({
       transparent={true}
       visible={visible}
       onRequestClose={onClose}>
-      <View style={modalStyles.container}>
-        <View style={[modalStyles.content, contentStyle]}>
+      <View style={styles.container}>
+        <View style={[styles.content, contentStyle]}>
           <CustomButton
             title="×"
             variant="outline"
             onPress={onClose}
-            style={modalStyles.closeButton}
+            style={styles.closeButton}
           />
           {children}
         </View>
