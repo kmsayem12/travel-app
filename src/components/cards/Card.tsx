@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 
-import {TravelLog} from '../../types/travel';
-import {cardStyles} from '../../styles/components/CardStyles';
+import {cardStyles} from './styles';
+import {Travel} from '../../types/travel';
 
 interface CardProps {
-  log: TravelLog;
-  onPress: (log: TravelLog) => void;
+  log: Travel;
+  onPress: (log: Travel) => void;
 }
 
 const Card: React.FC<CardProps> = ({log, onPress}) => {
