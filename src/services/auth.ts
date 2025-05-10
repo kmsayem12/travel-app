@@ -99,3 +99,13 @@ export const checkAuthState = async (): Promise<boolean> => {
     return false;
   }
 };
+
+export const getCurrentUser =
+  async (): Promise<FirebaseAuthTypes.User | null> => {
+    try {
+      const user = auth().currentUser as FirebaseAuthTypes.User;
+      return user;
+    } catch (error) {
+      throw error as AuthError;
+    }
+  };
