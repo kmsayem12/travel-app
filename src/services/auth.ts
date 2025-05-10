@@ -76,7 +76,7 @@ export const signIn = async ({
 
 export const signOut = async (): Promise<void> => {
   try {
-    const {currentUser} = auth();
+    const currentUser = await getCurrentUser();
     if (currentUser) {
       await database().ref(`/users/${currentUser.uid}`).update({
         isOnline: false,
@@ -106,6 +106,6 @@ export const getCurrentUser =
       const user = auth().currentUser as FirebaseAuthTypes.User;
       return user;
     } catch (error) {
-      throw error as AuthError;
+      throw new Error('No authenticated user');
     }
   };

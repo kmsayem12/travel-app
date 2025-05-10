@@ -12,7 +12,7 @@ export const createTravel = async (
   const currentUser = await getCurrentUser(); // Implement local auth/session as needed
 
   if (!currentUser) {
-    throw new Error('No authenticated user');
+    return {} as Travel;
   }
   const createdAt = new Date();
 
@@ -62,7 +62,7 @@ export const uploadPhoto = async (uri: string): Promise<string> => {
 export const getTravels = async (): Promise<Travel[]> => {
   const currentUser = await getCurrentUser();
   if (!currentUser) {
-    throw new Error('No authenticated user');
+    return [];
   }
 
   return new Promise(async (resolve, reject) => {

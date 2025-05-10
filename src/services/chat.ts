@@ -1,6 +1,6 @@
-import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
+import {getCurrentUser} from './auth';
 import {ChatUser, Message} from '../types/chat';
 
 export const fetchUsers = async ({
@@ -13,9 +13,9 @@ export const fetchUsers = async ({
   setLoading: (loading: boolean) => void;
 }): Promise<void> => {
   try {
-    const currentUser = auth().currentUser;
+    const currentUser = await getCurrentUser();
     if (!currentUser) {
-      throw new Error('No authenticated user');
+      return;
     }
     const allUsersSnap = await database().ref('/users').once('value');
     const usersData: ChatUser[] = [];
@@ -56,11 +56,10 @@ export const fetchUsers = async ({
 
 export const markAsRead = async (chatId: string): Promise<void> => {
   try {
-    const currentUser = auth().currentUser;
+    const currentUser = await getCurrentUser();
     if (!currentUser) {
-      throw new Error('No authenticated user');
+      return;
     }
-
     await database()
       .ref(`/chats/${chatId}/summary/readStatus/${currentUser!.uid}`)
       .set(true);
@@ -81,6 +80,7 @@ export const getStatusForUsers = ({
   users.forEach(user => {
     const ref = database().ref(`/status/${user.id}`);
     const listener = ref.on('value', snap => {
+      // @ts-ignore
       setOnlineStatus(prev => ({
         ...prev,
         [user.id]: snap.val()?.isOnline ?? false,
@@ -103,11 +103,11 @@ export const sendMessage = async (
   messageText: string,
 ): Promise<void> => {
   try {
-    const currentUser = auth().currentUser;
-    const timestamp = database.ServerValue.TIMESTAMP;
+    const currentUser = await getCurrentUser();
     if (!currentUser) {
-      throw new Error('No authenticated user');
+      return;
     }
+    const timestamp = database.ServerValue.TIMESTAMP;
 
     const chatId = getChatId(currentUser.uid, receiverId);
     const messageRef = database().ref(`/chats/${chatId}/messages`).push();
@@ -186,7 +186,7 @@ export const subscribeToMessages = ({
 };
 
 export const updateOnlineStatus = async (isOnline: boolean): Promise<void> => {
-  const currentUser = auth().currentUser;
+  const currentUser = await getCurrentUser();
   if (!currentUser) {
     return;
   }
