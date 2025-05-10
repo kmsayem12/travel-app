@@ -1,8 +1,8 @@
 import React, {ReactNode} from 'react';
 import {Modal, View, ViewStyle} from 'react-native';
 
+import {modalStyles} from './styles';
 import CustomButton from '../buttons/Button';
-import {modalStyles} from '../../styles/components/ModalStyles';
 
 interface CustomModalProps {
   visible: boolean;
