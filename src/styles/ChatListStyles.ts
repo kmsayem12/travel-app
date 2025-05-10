@@ -10,17 +10,19 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  inputContainer: {
+    padding: 16,
+    paddingBottom: 0,
+  },
   searchInput: {
     height: 50,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
-    paddingHorizontal: 15,
-    margin: 10,
     fontSize: 16,
   },
   userItem: {
-    padding: 15,
+    padding: 16,
     backgroundColor: '#fff',
   },
   userInfo: {
@@ -34,11 +36,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     marginRight: 8,
-  },
-  userEmail: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 4,
   },
   statusDot: {
     width: 8,

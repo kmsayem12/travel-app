@@ -1,6 +1,12 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState, useEffect, useCallback} from 'react';
-import {View, Text, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 
 import {ChatUser} from '../types/chat';
 import auth from '@react-native-firebase/auth';
@@ -73,14 +79,14 @@ const ChatListScreen: React.FC<ChatListScreenProps> = ({navigation}) => {
   }, [searchQuery, users]);
 
   const navigateToChat = useCallback(
-    async (user: ChatUser) => {
+    (user: ChatUser) => {
       const chatId =
         currentUser!.uid < user.id
           ? `${currentUser!.uid}_${user.id}`
           : `${user.id}_${currentUser!.uid}`;
 
       // Mark messages as read
-      await markAsRead(chatId);
+      markAsRead(chatId);
 
       navigation.navigate('Chat', {
         userId: user.id,
@@ -115,20 +121,22 @@ const ChatListScreen: React.FC<ChatListScreenProps> = ({navigation}) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Input
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-        placeholder="Search by name or email"
-        autoCapitalize="none"
-      />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.inputContainer}>
+        <Input
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          placeholder="Search by name or email"
+          autoCapitalize="none"
+        />
+      </View>
       <FlatList
         data={filteredUsers}
         renderItem={renderUser}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={Separator}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
