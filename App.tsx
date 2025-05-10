@@ -12,6 +12,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
+import './src/services/firebase';
 import {initDB} from './src/config/sqlite';
 import HomeScreen from './src/screens/Home/HomeScreen';
 import ChatScreen from './src/screens/Chat/ChatScreen';
